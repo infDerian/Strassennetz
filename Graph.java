@@ -34,9 +34,24 @@ public class Graph
     // Aufgabe 1: Schreibe Kommentare. Was wird hier gemacht?
     public void tiefensuche(String bez)
     {
-        // Dein Kommentar
+        // Gebe die Knotennummer mithilfe des Inhalts aus
         int startNr = knotennummerGeben(bez); 
+        // Markiere die Knoten als unbesucht
+        for (int i = 0; i < anzahl; i++)
+        {
+            knotenliste[i].markierungSetzen(false);
+        }
         // Dein Kommentar
+        tiefensucheKnoten(startNr);
+    }
+    
+    // Aufgabe, Zusatz: Suche nach Städten mit best. Anfangsbuchstaben
+    
+    public void tiefensucheBuchstabe(String bez)
+    {
+        // Gebe die Knotennummer mithilfe des Inhalts aus
+        int startNr = knotennummerGeben(bez); 
+        // Markiere die Knoten als unbesucht
         for (int i = 0; i < anzahl; i++)
         {
             knotenliste[i].markierungSetzen(false);
@@ -50,14 +65,19 @@ public class Graph
     private void tiefensucheKnoten(int nummer)
     {
         // Knoten als besucht markieren
-       
-        // Information über Knote ausgeben
-
+        Knoten k = knotenliste[nummer];
+        k.markierungSetzen(true);
+        // Information über Knoten ausgeben
+        System.out.println(k.inhaltGeben());
         // Bearbeitung der noch nicht besuchten Nachbarknoten
         for (int i = 0; i < anzahl; i++)
         {
-            //
+            //Vervollständige die for-Schleife!
+            if((!knotenliste[i].markierungGeben()) && adjazenzmatrix[nummer][i] > 0) {
+                tiefensucheKnoten(i);
+            }
         }
+    
         System.out.println("zurück");
     }
 

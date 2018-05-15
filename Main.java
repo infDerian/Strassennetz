@@ -14,9 +14,9 @@ public class Main
         System.out.println();
         
         // Gib die Nachbarn aus
-        s.nachbarnAusgeben("M");
+        s.nachbarnAusgeben("IN");
         
         // Besuche alle Knoten
-        s.reise("M");
+        s.reise("IN");
     }
 }
